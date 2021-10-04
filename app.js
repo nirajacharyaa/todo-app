@@ -29,6 +29,9 @@ function addTodo(e) {
     const task = document.createElement("li");
 
     task.innerText = input.value;
+    //added localStorage func
+    localStorage.setItem(task.innerText, task);
+    
     input.value = "";
     task.classList.add("tasklist");
     taskWrapper.appendChild(task);
@@ -54,6 +57,8 @@ function deleteCheck(e) {
     item.parentElement.classList.add("fall");
     item.parentElement.addEventListener("transitionend", function () {
       item.parentElement.remove();
+      //delete selected todo-list item from localStorage
+      localStorage.removeItem(item.parentElement.querySelector(".tasklist").innerText);
     });
   }
   if (item.classList[0] == "completed") {
