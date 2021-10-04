@@ -37,7 +37,7 @@ function addTodo(e) {
     input.value = "";
 
     renderTodos()
-
+    task.innerText = input.value;
     input.value = "";
   }
 }
@@ -127,6 +127,7 @@ function createTodoItem(todo) {
 function deleteCheck(e) {
   const item = e.target;
   if (item.classList[0] == "trash") {
+
     const todos = JSON.parse(localStorage.getItem('todos'));
     const index = todos.indexOf(item.parentElement.parentElement.innerText)
     if (index > -1) {
@@ -134,10 +135,15 @@ function deleteCheck(e) {
     }
     localStorage.setItem('todos', JSON.stringify(todos))
     renderTodos()
+
+    item.parentElement.classList.add("fall");
+    item.parentElement.addEventListener("transitionend", function () {
+      item.parentElement.remove();
+    });
+
   }
   if (item.classList[0] == "completed") {
-    // item.previousSibling.style.textDecoration = "line-through";
-    // item.parentElement.style.opacity = 0.5;
-    console.log('completed');
+      item.previousSibling.style.textDecoration = "line-through";
+      item.parentElement.style.opacity = 0.5;
   }
 }
