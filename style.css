@@ -57,7 +57,6 @@ form button {
   align-content: center;
   justify-content: center;
   flex-direction: column;
-  background: rgb(192, 192, 192);
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   transition: all ease-in 75ms;
@@ -71,13 +70,19 @@ form button i {
   color: #eee;
 }
 
-.add {
+.add{
   cursor: pointer;
+  background-color: lightseagreen;
+}
+.add i{
+  position: relative;
+  left: 25%;
+  color: white;
 }
 
-.add i:hover {
+.add:hover {
   background-color: #264653;
-  color: white;
+  color: green;
 }
 
 .wrapper {
@@ -119,7 +124,7 @@ form button i {
   font-size: 1rem;
   margin-left: 2px;
   color: white;
-  background-color: lightseagreen;
+  background-color: #20b254;
   padding: 0.5rem;
   cursor: pointer;
   border-radius: 0.2rem;
