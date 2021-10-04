@@ -39,14 +39,36 @@ form input {
   font-size: 1.6rem;
   border: none;
   background: white;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  max-height: 50px;
+}
+
+form button {
+  outline: none;
+  max-height: 50px;
+  height: 50px;
+  width: 50px;
+  font-size: 1.6rem;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgb(192, 192, 192);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  transition: all ease-in 75ms;
+}
+
+form button:hover {
+  background: rgb(165, 165, 165);
 }
 
 form button i {
-  outline: none;
-  padding: 0.7rem;
-  font-size: 1.6rem;
-  border: none;
-  background: white;
+  color: #eee;
 }
 
 .add {
