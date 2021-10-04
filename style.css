@@ -1,80 +1,112 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
-*{
-	padding: 0;
-	margin: 0;
-	box-sizing: border-box;
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;1,100&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-body{
-	background-image: linear-gradient(120deg,#264653,#2a9d8f);
-	color: white;
-	font-family: 'Open Sans Bold',sans-serif;
-	min-height: 100vh;
+body {
+  background: #060822;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  overflow-y: hidden;
 }
-header{
-	font-size: 2rem;
-}
-header,form{
-	min-height: 20vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-form input, form button i{
-	padding: 0.5rem;
-	font-size: 2rem;
-	border: none;
-	background: white;
-}
-.add{
-	cursor: pointer;
-}
-.add i:hover{
-	background-color: #264653;
-	color: white;
-}
-.wrapper{
-	width: 60%;
-	margin: auto;
+header {
+  font-size: 1.3rem;
 }
 
-.todo{
-	display: flex;
-	justify-items: center;
-	align-items: center;
-	justify-content: space-between;
-	background-color: white;
-	color: black;
-	margin: 1rem;
-	padding: .5rem;
-	transition: all 0.5s ease;
+header h1 {
+  margin-top: 4rem;
+  margin-bottom: 0.5rem;
+}
+
+.todo-img {
+  width: 50px;
+  padding-top: 50px;
+  padding-left: 10px;
+}
+
+header,
+form {
+  min-height: 18vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form input {
+  outline: none;
+  padding: 0.7rem;
+  font-size: 1.6rem;
+  border: none;
+  background: white;
+}
+
+form button i {
+  outline: none;
+  padding: 0.7rem;
+  font-size: 1.6rem;
+  border: none;
+  background: white;
+}
+
+.add {
+  cursor: pointer;
+}
+
+.add i:hover {
+  background-color: #264653;
+  color: white;
+}
+
+.wrapper {
+  width: 50%;
+  margin: auto;
+}
+.todo {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  color: white;
+  margin: 1rem;
+  padding: 0.4rem;
+  transition: all 0.5s ease;
+  line-height: 1.42857143;
+  border-radius: 0.2rem;
+  background: rgb(85, 41, 220);
 }
 .todo .tasklist {
-	flex: 1;
-	list-style: none;
+  margin-left: 15px;
+  flex: 1;
+  list-style: none;
 }
 .todo .trash {
-	border: none;
-	font-size: 1rem;
-	margin-left: 2px;
-	color: white;
-	background-color: darkred;
-	padding: .5rem;
-	cursor: pointer;
+  border: none;
+  font-size: 1rem;
+  margin-left: 2px;
+  color: white;
+  background-color: darkred;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.2rem;
 }
 .todo .completed {
-	border: none;
-	font-size: 1rem;
-	margin-left: 2px;
-	color: white;
-	background-color: lightseagreen;
-	padding: .5rem;
-	cursor: pointer;
+  margin-left: 5px;
+  border: none;
+  font-size: 1rem;
+  margin-left: 2px;
+  color: white;
+  background-color: lightseagreen;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.2rem;
 }
-.fa{
-	pointer-events: none;
+.fa {
+  pointer-events: none;
 }
-.fall{
-	transform: scale(0);
-	opacity: 0;
+.fall {
+  transform: scale(0);
+  opacity: 0;
 }
