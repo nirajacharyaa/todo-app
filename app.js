@@ -10,7 +10,7 @@ const todoList = document.querySelector("#todo-container");
 //            *Event listeners*             //
 /*==========================================*/
 
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function() {
   // Your code to run since DOM is loaded and ready
   if (localStorage.hasOwnProperty('todos')) {
   const todos = JSON.parse(localStorage.getItem('todos'));
@@ -37,7 +37,6 @@ function addTodo(e) {
     input.value = "";
 
     renderTodos()
-    task.innerText = input.value;
     input.value = "";
   }
 }
@@ -136,14 +135,14 @@ function deleteCheck(e) {
     localStorage.setItem('todos', JSON.stringify(todos))
     renderTodos()
 
-    item.parentElement.classList.add("fall");
+    // item.parentElement.classList.add("fall");
     item.parentElement.addEventListener("transitionend", function () {
       item.parentElement.remove();
     });
 
   }
+  console.log(item)
   if (item.classList[0] == "completed") {
-      item.previousSibling.style.textDecoration = "line-through";
-      item.parentElement.style.opacity = 0.5;
+      item.parentElement.parentElement.classList.add("taskCompleted");
   }
 }
