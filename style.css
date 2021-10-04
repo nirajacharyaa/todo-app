@@ -77,7 +77,6 @@ form button i {
 .add i{
   position: relative;
   color: white;
-  left: 25%;
 }
 
 .add:hover {
