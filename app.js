@@ -38,7 +38,6 @@ function addTodo(e) {
 
     renderTodos()
 
-    // reset input value
     input.value = "";
   }
 }

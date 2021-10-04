@@ -3,13 +3,13 @@
 
   > 1
   > 
-  > Name:
+  > Name: Jun Song
   > 
-  > Email:
+  > Email: jsong89@myseneca.ca
   > 
-  > Socials:
+  > Socials: https://dev.to/juuuuuuun
   > 
-  > Website:
+  > Website: N/A
 
 Name: Sean Kerwin
 Email: howdy@seankerwin.dev
