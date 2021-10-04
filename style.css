@@ -10,7 +10,7 @@ body {
   color: white;
   font-family: "Montserrat", sans-serif;
   min-height: 100vh;
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
 header {
   font-size: 1.3rem;
