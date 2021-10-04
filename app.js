@@ -135,11 +135,6 @@ function deleteCheck(e) {
     localStorage.setItem('todos', JSON.stringify(todos))
     renderTodos()
 
-    // item.parentElement.classList.add("fall");
-    item.parentElement.addEventListener("transitionend", function () {
-      item.parentElement.remove();
-    });
-
   }
   console.log(item)
   if (item.classList[0] == "completed") {
