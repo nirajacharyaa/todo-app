@@ -41,21 +41,27 @@ function renderTodos() {
   todos.forEach((t) => createTodoItem(t));
 }
 
-function addTodoToLocalStorage(todo) {
+function addTodoToLocalStorage(text) {
   let todos = [];
 
   // get any current todo's
   if (localStorage.hasOwnProperty("todos")) {
     todos = JSON.parse(localStorage.getItem("todos") || "");
   }
-  // add new todo to todos array
-  todos = [...todos, todo];
-  // make the array unique (no point in having duplicate todo's)
-  let todosUniq = [...new Set(todos)];
-  console.log(todosUniq);
 
-  // push new array to local storage
-  localStorage.setItem("todos", JSON.stringify(todosUniq));
+  if (todos.map((todo) => todo.text).includes(text)) return;
+
+  // each todo will be an object of following properties
+  let newTodo = {
+    text,
+    completed: false,
+  };
+
+  // add new todo to todos array
+  updatedTodos = [...todos, newTodo];
+
+  // push new todos to local storage
+  localStorage.setItem("todos", JSON.stringify(updatedTodos));
 }
 
 function createTodoItem(todo) {
@@ -68,6 +74,7 @@ function createTodoItem(todo) {
   // create a div inside the list element
   const taskInner = document.createElement("div");
   taskInner.classList.add("task-inner");
+  if (todo.completed) taskInner.classList.add("taskCompleted");
 
   // create a container for the buttons
   const taskButtons = document.createElement("div");
@@ -76,7 +83,7 @@ function createTodoItem(todo) {
   // create container for task text
   const taskText = document.createElement("div");
   taskText.classList.add("task-text");
-  taskText.innerText = todo;
+  taskText.innerText = todo.text;
 
   // create the buttons
   //completed tasks
@@ -104,17 +111,28 @@ function createTodoItem(todo) {
 
 function deleteCheck(e) {
   const item = e.target;
+  const todos = JSON.parse(localStorage.getItem("todos"));
   if (item.classList.contains("trash")) {
-    const todos = JSON.parse(localStorage.getItem("todos"));
-    const index = todos.indexOf(item.parentElement.parentElement.innerText);
+    const index = todos
+      .map(({ text }) => text)
+      .indexOf(item.parentElement.parentElement.innerText);
+
     if (index > -1) {
       todos.splice(index, 1);
     }
     localStorage.setItem("todos", JSON.stringify(todos));
-    renderTodos();
   }
-  console.log(item);
+
   if (item.classList.contains("completed")) {
-    item.parentElement.parentElement.classList.add("taskCompleted");
+    // get the clicked item
+    let clickedItemIndex = todos
+      .map(({ text }) => text)
+      .findIndex((ele) => ele === item.parentElement.parentElement.innerText);
+
+    // toggle todo state
+    todos[clickedItemIndex].completed = !todos[clickedItemIndex].completed;
+    localStorage.setItem("todos", JSON.stringify(todos));
   }
+
+  renderTodos();
 }
