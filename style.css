@@ -44,7 +44,7 @@ form input {
   max-height: 50px;
 }
 
-form button {
+form .add {
   outline: none;
   max-height: 50px;
   height: 50px;
@@ -78,7 +78,30 @@ form button i {
   align-items: center;
 }
 
-.add:hover {
+.clear{
+  cursor: pointer;
+  background-color: lightseagreen;
+ margin-left: 10px;
+ outline: none;
+ max-height: 50px;
+ height: 50px;
+ width: 80px;
+ text-align: center;
+ font-size: 1.6rem;
+ border: none;
+ padding: 0;
+ border-radius: 10px;
+ /* display: flex;
+ align-content: center;
+ justify-content: center;
+ flex-direction: column; */
+ /* border-top-right-radius: 10px;
+ border-bottom-right-radius: 10px; */
+ transition: all ease-in 75ms;
+}
+
+
+.clear .add:hover {
   background-color: #264653;
   color: green;
 }
