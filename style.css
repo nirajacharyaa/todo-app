@@ -53,10 +53,6 @@ form .add {
   border: none;
   padding: 0;
   border-radius: 0;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  flex-direction: column;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   transition: all ease-in 75ms;
@@ -81,7 +77,6 @@ form button i {
 .add i{
   position: relative;
   color: white;
-  padding-left: 15px;
 }
 
 .clear{
