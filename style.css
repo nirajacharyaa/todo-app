@@ -78,9 +78,15 @@ form button i {
   align-items: center;
 }
 
+.add i{
+  position: relative;
+  color: white;
+  padding-left: 15px;
+}
+
 .clear{
-  cursor: pointer;
-  background-color: lightseagreen;
+ cursor: pointer;
+ background-color: lightseagreen;
  margin-left: 10px;
  outline: none;
  max-height: 50px;
@@ -91,15 +97,9 @@ form button i {
  border: none;
  padding: 0;
  border-radius: 10px;
- /* display: flex;
- align-content: center;
- justify-content: center;
- flex-direction: column; */
- /* border-top-right-radius: 10px;
- border-bottom-right-radius: 10px; */
  transition: all ease-in 75ms;
-}
 
+}
 
 .clear .add:hover {
   background-color: #264653;
@@ -107,7 +107,6 @@ form button i {
 }
 
 .wrapper {
-  width: 50%;
   margin: auto;
 }
 .task-item {
@@ -170,14 +169,25 @@ form button i {
   text-decoration: line-through;
 }
 
-@media only screen and (max-width: 400px) {
-  .wrapper {
-     width: 70%;
 
+@media (max-width:450px) {
+  form input{
+    width:277px;
   }
-  #input{
-    width: 80%;
-  }
-
 }
+
+@media (max-width:360px) {
+  form input{
+    width:240px;
+  }
+}
+
+@media (max-width:315px) {
+  header h1{
+    font-size: 33px;
+  }
+  form input{
+    width:220px;
+  }
+} 
 
