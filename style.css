@@ -44,7 +44,7 @@ form input {
   max-height: 50px;
 }
 
-form button {
+form .add {
   outline: none;
   max-height: 50px;
   height: 50px;
@@ -70,17 +70,38 @@ form button i {
   color: #eee;
 }
 
-.add{
+.add {
   cursor: pointer;
   background-color: lightseagreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .add i{
   position: relative;
   color: white;
   padding-left: 15px;
 }
 
-.add:hover {
+.clear{
+ cursor: pointer;
+ background-color: lightseagreen;
+ margin-left: 10px;
+ outline: none;
+ max-height: 50px;
+ height: 50px;
+ width: 80px;
+ text-align: center;
+ font-size: 1.6rem;
+ border: none;
+ padding: 0;
+ border-radius: 10px;
+ transition: all ease-in 75ms;
+
+}
+
+.clear .add:hover {
   background-color: #264653;
   color: green;
 }
@@ -94,7 +115,6 @@ form button i {
   justify-items: center;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
   color: white;
   margin: 1rem;
   padding: 0.4rem;
@@ -113,10 +133,14 @@ form button i {
   justify-content: space-between;
 }
 
+.buttons{
+  display: flex;
+     
+}
 .task-item .trash {
   border: none;
   font-size: 1rem;
-  margin-left: 2px;
+  margin-left: 5px;
   color: white;
   background-color: darkred;
   padding: 0.5rem;
@@ -127,7 +151,6 @@ form button i {
   margin-left: 5px;
   border: none;
   font-size: 1rem;
-  margin-left: 2px;
   color: white;
   background-color: #20b254;
   padding: 0.5rem;
@@ -141,10 +164,11 @@ form button i {
   transform: scale(0);
   opacity: 0;
 }
-.taskCompleted{
+.taskCompleted {
   opacity: 0.5;
   text-decoration: line-through;
 }
+
 
 @media (max-width:450px) {
   form input{
@@ -166,3 +190,4 @@ form button i {
     width:220px;
   }
 } 
+
