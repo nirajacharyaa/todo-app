@@ -137,12 +137,9 @@ function deleteCheck(e) {
   renderTodos();
 }
 
-function clearStorage()
-{
-  if(confirm("Do you really want to clear?"))
-  {
+function clearStorage() {
+  if (confirm("Do you really want to clear?")) {
     localStorage.clear();
-    update()
-    location.reload();
+    update();
   }
 }
