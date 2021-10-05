@@ -118,3 +118,13 @@ function deleteCheck(e) {
     item.parentElement.parentElement.classList.add("taskCompleted");
   }
 }
+
+function clearStorage()
+{
+  if(confirm("Do you really want to clear?"))
+  {
+    console.log('Clearing the storage')
+    localStorage.clear();
+    update()
+  }
+}
