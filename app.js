@@ -126,5 +126,6 @@ function clearStorage()
     console.log('Clearing the storage')
     localStorage.clear();
     update()
+    location.reload();
   }
 }
