@@ -77,6 +77,7 @@ form button i {
 .add i{
   position: relative;
   color: white;
+  padding-left: 15px;
 }
 
 .add:hover {
@@ -85,7 +86,6 @@ form button i {
 }
 
 .wrapper {
-  width: 50%;
   margin: auto;
 }
 .task-item {
@@ -145,3 +145,24 @@ form button i {
   opacity: 0.5;
   text-decoration: line-through;
 }
+
+@media (max-width:450px) {
+  form input{
+    width:277px;
+  }
+}
+
+@media (max-width:360px) {
+  form input{
+    width:240px;
+  }
+}
+
+@media (max-width:315px) {
+  header h1{
+    font-size: 33px;
+  }
+  form input{
+    width:220px;
+  }
+} 
