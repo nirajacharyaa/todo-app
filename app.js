@@ -38,7 +38,7 @@ function renderTodos() {
   // read todo's from local storage and display them
   const todos = JSON.parse(localStorage.getItem("todos"));
   // check that we're not creating the item again in the dom
-  todos.forEach((t) => createTodoItem(t));
+  todos?.forEach((t) => createTodoItem(t));
 }
 
 function addTodoToLocalStorage(text) {

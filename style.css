@@ -103,6 +103,7 @@ form button i {
 
 .wrapper {
   margin: auto;
+  max-width: 1200px;
 }
 .task-item {
   display: flex;
