@@ -111,6 +111,10 @@ form button i {
   justify-content: space-between;
 }
 
+.buttons{
+  display: flex;
+     
+}
 .task-item .trash {
   border: none;
   font-size: 1rem;
@@ -141,4 +145,15 @@ form button i {
 .taskCompleted {
   opacity: 0.5;
   text-decoration: line-through;
+}
+
+@media only screen and (max-width: 400px) {
+  .wrapper {
+     width: 70%;
+
+  }
+  #input{
+    width: 80%;
+  }
+
 }
