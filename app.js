@@ -5,6 +5,7 @@
 const input = document.querySelector("#input");
 const add = document.querySelector(".add");
 const todoList = document.querySelector("#todo-container");
+const snackbar = document.getElementById("snackbar");
 
 /*==========================================*/
 //            *Event listeners*             //
@@ -139,10 +140,9 @@ function deleteCheck(e) {
 }
 
 function showSnackBar(msg){
-  var x = document.getElementById("snackbar");
-  x.innerText=msg;
-  x.className = "show";
-  setTimeout(function(){ x.className = ""; }, 3000);
+  snackbar.innerText=msg;
+  snackbar.className = "show";
+  setTimeout(function(){ snackbar.className = ""; }, 3000);
 }
 
 function clearStorage() {
