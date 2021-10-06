@@ -119,6 +119,7 @@ function deleteCheck(e) {
 
     if (index > -1) {
       todos.splice(index, 1);
+      showSnackBar("Deleted Todo Successfully..")
     }
     localStorage.setItem("todos", JSON.stringify(todos));
   }
@@ -135,6 +136,13 @@ function deleteCheck(e) {
   }
 
   renderTodos();
+}
+
+function showSnackBar(msg){
+  var x = document.getElementById("snackbar");
+  x.innerText=msg;
+  x.className = "show";
+  setTimeout(function(){ x.className = ""; }, 3000);
 }
 
 function clearStorage() {
