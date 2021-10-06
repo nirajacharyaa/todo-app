@@ -74,26 +74,25 @@ form button i {
   align-items: center;
 }
 
-.add i{
+.add i {
   position: relative;
   color: white;
 }
 
-.clear{
- cursor: pointer;
- background-color: lightseagreen;
- margin-left: 10px;
- outline: none;
- max-height: 50px;
- height: 50px;
- width: 80px;
- text-align: center;
- font-size: 1.6rem;
- border: none;
- padding: 0;
- border-radius: 10px;
- transition: all ease-in 75ms;
-
+.clear {
+  cursor: pointer;
+  background-color: lightseagreen;
+  margin-left: 10px;
+  outline: none;
+  max-height: 50px;
+  height: 50px;
+  width: 80px;
+  text-align: center;
+  font-size: 1.6rem;
+  border: none;
+  padding: 0;
+  border-radius: 10px;
+  transition: all ease-in 75ms;
 }
 
 .clear .add:hover {
@@ -129,9 +128,8 @@ form button i {
   justify-content: space-between;
 }
 
-.buttons{
+.buttons {
   display: flex;
-     
 }
 .task-item .trash {
   border: none;
@@ -165,44 +163,85 @@ form button i {
   text-decoration: line-through;
 }
 
-
-@media (max-width:450px) {
-  form input{
-    width:277px;
+@media (max-width: 450px) {
+  form input {
+    width: 277px;
     margin-left: 1rem;
-    }
-  .clear{
+  }
+  .clear {
     font-size: 1rem;
-    padding: .1rem;
+    padding: 0.1rem;
     margin-right: 1rem;
   }
-  .add{
+  .add {
     margin-left: -1rem;
   }
 
-  .task-item{
+  .task-item {
     margin: 1rem;
   }
 }
 
-@media (max-width:360px) {
-  form input{
-    width:240px;
+@media (max-width: 360px) {
+  form input {
+    width: 240px;
   }
-  .task-item{
-    margin:1rem;
+  .task-item {
+    margin: 1rem;
   }
 }
 
-@media (max-width:315px) {
-  header h1{
+@media (max-width: 315px) {
+  header h1 {
     font-size: 33px;
   }
-  form input{
-    width:220px;
+  form input {
+    width: 220px;
   }
-  .task-item{
+  .task-item {
     margin: 1rem;
   }
-} 
+}
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: darkred;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
 
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}

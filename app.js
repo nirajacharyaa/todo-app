@@ -5,6 +5,7 @@
 const input = document.querySelector("#input");
 const add = document.querySelector(".add");
 const todoList = document.querySelector("#todo-container");
+const snackbar = document.getElementById("snackbar");
 
 /*==========================================*/
 //            *Event listeners*             //
@@ -119,6 +120,7 @@ function deleteCheck(e) {
 
     if (index > -1) {
       todos.splice(index, 1);
+      showSnackBar("Deleted Todo Successfully..")
     }
     localStorage.setItem("todos", JSON.stringify(todos));
   }
@@ -135,6 +137,12 @@ function deleteCheck(e) {
   }
 
   renderTodos();
+}
+
+function showSnackBar(msg){
+  snackbar.innerText=msg;
+  snackbar.className = "show";
+  setTimeout(function(){ snackbar.className = ""; }, 3000);
 }
 
 function clearStorage() {
