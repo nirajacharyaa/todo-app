@@ -95,9 +95,36 @@ form button i {
   transition: all ease-in 75ms;
 }
 
+.clear:hover {
+  background-color: darkred;
+  color: white;
+}
+
 .clear .add:hover {
   background-color: #264653;
-  color: green;
+  color: #20b254;
+}
+
+.all-done {
+  cursor: pointer;
+  background-color: lightseagreen;
+  margin-left: 10px;
+  outline: none;
+  max-height: 50px;
+  height: 50px;
+  width: auto;
+  text-align: center;
+  font-size: 1.6rem;
+  border: none;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 10px;
+  transition: all ease-in 75ms;
+}
+
+.all-done:hover{
+  background-color: green;
+  color: white;
 }
 
 .wrapper {

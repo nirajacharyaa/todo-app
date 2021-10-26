@@ -151,3 +151,16 @@ function clearStorage() {
     update();
   }
 }
+
+function allDoneStorage() {
+  var items = JSON.parse(localStorage.getItem("todos"));
+  if (confirm("Do you really want to set all-done?")) {
+    items.map(function(e){
+      if(!e.completed){
+        e.completed = true;
+      }
+    });
+    localStorage.setItem("todos", JSON.stringify(items));
+  }
+}
+
