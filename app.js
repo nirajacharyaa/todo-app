@@ -61,6 +61,7 @@ function addTodoToLocalStorage(text) {
   let newTodo = {
     text,
     completed: false,
+    date: now(),
   };
 
   // add new todo to todos array
@@ -108,7 +109,8 @@ function createTodoItem(todo) {
   // get date
   let taskDate = document.createElement('div');
   taskDate.setAttribute('class', 'task-date');
-  taskDate.textContent = now();
+  taskDate.textContent = todo.date;
+  if (todo.completed) taskDate.classList.add("taskCompleted");
 
   // add the taskDate to the taskItem
   taskItem.appendChild(taskDate);
@@ -177,4 +179,3 @@ function allDoneStorage() {
     localStorage.setItem("todos", JSON.stringify(items));
   }
 }
-
