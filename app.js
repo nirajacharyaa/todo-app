@@ -19,7 +19,12 @@ todoList.addEventListener("click", deleteCheck);
 /*==========================================*/
 //                *functions*               //
 /*==========================================*/
-
+function now(){
+  let today = new Date();
+  let date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
+  let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  return `${date}\n${time}`;
+}
 function addTodo(e) {
   //prevnent form from submitting
   e.preventDefault();
@@ -56,6 +61,7 @@ function addTodoToLocalStorage(text) {
   let newTodo = {
     text,
     completed: false,
+    date: now(),
   };
 
   // add new todo to todos array
@@ -98,6 +104,16 @@ function createTodoItem(todo) {
   trashBtn.innerHTML = `<i class="fa fa-trash"></i>`;
   trashBtn.classList.add("trash");
   taskButtons.appendChild(trashBtn);
+
+    
+  // get date
+  let taskDate = document.createElement('div');
+  taskDate.setAttribute('class', 'task-date');
+  taskDate.textContent = todo.date;
+  if (todo.completed) taskDate.classList.add("taskCompleted");
+
+  // add the taskDate to the taskItem
+  taskItem.appendChild(taskDate);
 
   // add the buttons div and text to the tasksInner
   taskInner.appendChild(taskText);
@@ -163,4 +179,3 @@ function allDoneStorage() {
     localStorage.setItem("todos", JSON.stringify(items));
   }
 }
-
