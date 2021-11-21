@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TODO LIST</title>
-    <link rel="shortcut icon" type="image/jpg" href="to-do-list.png"/>
+    <link rel="shortcut icon" type="image/jpg" href="to-do-list.png" />
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -72,6 +72,13 @@
         }
       }
     </style>
+    <div class="dark-light">
+      <button class="dark-mode"><i class="fas fa-moon"></i>Dark</button>
+      <button class="light-mode display-none">
+        <i class="fas fa-moon"></i>Light
+      </button>
+    </div>
+
     <header>
       <h1>TODO LIST</h1>
       <img class="todo-img" src="to-do-list.png" alt="Todo Image" />
@@ -82,7 +89,11 @@
       <button class="add" type="submit">
         <i class="fa fa-plus"></i>
       </button>
-      <button id="all-done" class="btn btn-primary all-done" onclick="allDoneStorage()">
+      <button
+        id="all-done"
+        class="btn btn-primary all-done"
+        onclick="allDoneStorage()"
+      >
         All-Done
       </button>
       <button id="clear" class="btn btn-primary clear" onclick="clearStorage()">

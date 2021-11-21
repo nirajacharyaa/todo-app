@@ -6,6 +6,13 @@ const input = document.querySelector("#input");
 const add = document.querySelector(".add");
 const todoList = document.querySelector("#todo-container");
 const snackbar = document.getElementById("snackbar");
+let darkMode = document.querySelector(".dark-mode");
+let lightMode = document.querySelector(".light-mode");
+let dark_body = document.body;
+let dark_input = document.querySelector("form input");
+let dark_taskItem = document.querySelector(".task-item");
+let dark_formBtn = document.querySelector("form button");
+let dark_title = document.querySelector("header h1");
 
 /*==========================================*/
 //            *Event listeners*             //
@@ -15,14 +22,18 @@ const snackbar = document.getElementById("snackbar");
 document.addEventListener("DOMContentLoaded", () => renderTodos());
 add.addEventListener("click", addTodo);
 todoList.addEventListener("click", deleteCheck);
+darkMode.addEventListener("click", toggleDark);
+lightMode.addEventListener("click", toggleDark);
 
 /*==========================================*/
 //                *functions*               //
 /*==========================================*/
-function now(){
+function now() {
   let today = new Date();
-  let date = today.getFullYear()+'/'+(today.getMonth()+1)+'/'+today.getDate();
-  let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  let date =
+    today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
+  let time =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
   return `${date}\n${time}`;
 }
 function addTodo(e) {
@@ -105,10 +116,9 @@ function createTodoItem(todo) {
   trashBtn.classList.add("trash");
   taskButtons.appendChild(trashBtn);
 
-    
   // get date
-  let taskDate = document.createElement('div');
-  taskDate.setAttribute('class', 'task-date');
+  let taskDate = document.createElement("div");
+  taskDate.setAttribute("class", "task-date");
   taskDate.textContent = todo.date;
   if (todo.completed) taskDate.classList.add("taskCompleted");
 
@@ -136,7 +146,7 @@ function deleteCheck(e) {
 
     if (index > -1) {
       todos.splice(index, 1);
-      showSnackBar("Deleted Todo Successfully..")
+      showSnackBar("Deleted Todo Successfully..");
     }
     localStorage.setItem("todos", JSON.stringify(todos));
   }
@@ -155,10 +165,12 @@ function deleteCheck(e) {
   renderTodos();
 }
 
-function showSnackBar(msg){
-  snackbar.innerText=msg;
+function showSnackBar(msg) {
+  snackbar.innerText = msg;
   snackbar.className = "show";
-  setTimeout(function(){ snackbar.className = ""; }, 3000);
+  setTimeout(function () {
+    snackbar.className = "";
+  }, 3000);
 }
 
 function clearStorage() {
@@ -171,11 +183,29 @@ function clearStorage() {
 function allDoneStorage() {
   var items = JSON.parse(localStorage.getItem("todos"));
   if (confirm("Do you really want to set all-done?")) {
-    items.map(function(e){
-      if(!e.completed){
+    items.map(function (e) {
+      if (!e.completed) {
         e.completed = true;
       }
     });
     localStorage.setItem("todos", JSON.stringify(items));
+  }
+}
+
+function toggleDark() {
+  if (!darkMode.classList.contains("display-none")) {
+    darkMode.classList.add("display-none");
+    lightMode.classList.remove("display-none");
+    dark_body.classList.add("dark");
+    dark_input.classList.add("dark");
+    dark_formBtn.classList.add("dark");
+    dark_title.style.color = "white";
+  } else {
+    lightMode.classList.add("display-none");
+    darkMode.classList.remove("display-none");
+    dark_body.classList.remove("dark");
+    dark_input.classList.remove("dark");
+    dark_formBtn.classList.remove("dark");
+    dark_title.style.color = "#05445e";
   }
 }
