@@ -6,11 +6,53 @@
 }
 
 body {
-  background: #060822;
-  color: white;
   font-family: "Montserrat", sans-serif;
   min-height: 100vh;
 }
+
+.dark-mode {
+  position: fixed;
+  top: 4vw;
+  left: 4vw;
+  background-color: #05445e;
+  height: 35px;
+  width: auto;
+  padding-left: 0.7rem;
+  padding-right: 0.7rem;
+  border-radius: 8px;
+  border: none;
+}
+
+.display-none {
+  display: none;
+}
+
+.dark-light i {
+  padding-right: 0.3rem;
+}
+
+.dark-light button:hover {
+  cursor: pointer;
+  background-color: grey;
+}
+
+.light-mode {
+  background-color: lightseagreen;
+  position: fixed;
+  top: 4vw;
+  left: 4vw;
+  height: 35px;
+  width: auto;
+  padding-left: 0.7rem;
+  padding-right: 0.7rem;
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  color: white;
+}
+
 header {
   font-size: 1.3rem;
 }
@@ -18,6 +60,7 @@ header {
 header h1 {
   margin-top: 4rem;
   margin-bottom: 0.5rem;
+  color: #05445e;
 }
 
 .todo-img {
@@ -38,10 +81,15 @@ form input {
   padding: 0.7rem;
   font-size: 1.6rem;
   border: none;
-  background: white;
+  background-color: #75e6da;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   max-height: 50px;
+  color: white;
+}
+
+::placeholder {
+  color: grey;
 }
 
 form .add {
@@ -59,7 +107,7 @@ form .add {
 }
 
 form button:hover {
-  background: rgb(165, 165, 165);
+  background-color: #189ab4;
 }
 
 form button i {
@@ -122,7 +170,7 @@ form button i {
   transition: all ease-in 75ms;
 }
 
-.all-done:hover{
+.all-done:hover {
   background-color: green;
   color: white;
 }
@@ -143,7 +191,7 @@ form button i {
   transition: all 0.5s ease;
   line-height: 1.42857143;
   border-radius: 0.2rem;
-  background: rgb(85, 41, 220);
+  background-color: #189ab4;
 }
 
 .task-item .task-inner {
@@ -155,7 +203,7 @@ form button i {
   justify-content: space-between;
 }
 
-.task-date{
+.task-date {
   font-size: 0.7rem;
   font-weight: 900;
   color: rgb(255, 255, 255);
@@ -164,7 +212,7 @@ form button i {
   margin-right: 2%;
 }
 
-.task-text{
+.task-text {
   font-weight: 900 !important;
   color: #96ff88;
 }
@@ -202,6 +250,28 @@ form button i {
   opacity: 0.5;
   text-decoration: line-through;
 }
+
+/*Dark mode css*/
+
+body.dark {
+  background: #060822;
+  color: white;
+}
+
+header h1.dark {
+  color: white;
+}
+
+form input.dark {
+  background: white;
+  color: black;
+}
+
+form button.dark:hover {
+  background: rgb(165, 165, 165);
+}
+
+/* Dark mode css end*/
 
 @media (max-width: 450px) {
   form input {
