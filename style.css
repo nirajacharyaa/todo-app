@@ -76,6 +76,28 @@ form {
   justify-content: center;
   align-items: center;
 }
+
+.currentTime {
+  font-size: 1.5rem;
+  font-weight: lighter;
+}
+
+.currentTime,
+.weather {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.currentDesc {
+  padding-bottom: 5px;
+}
+
+.subWeatherItems {
+  padding-left: 1vh;
+  font-weight: lighter;
+}
+
 form input {
   outline: none;
   padding: 0.7rem;

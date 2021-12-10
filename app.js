@@ -13,7 +13,10 @@ let dark_input = document.querySelector("form input");
 let dark_taskItem = document.querySelector(".task-item");
 let dark_formBtn = document.querySelector("form button");
 let dark_title = document.querySelector("header h1");
-
+let currentTime = document.querySelector(".currentTime");
+let currentDesc = document.querySelector(".currentDesc");
+let currentWeather = document.querySelector(".currentWeather");
+let currentLocation = document.querySelector(".currentLocation");
 /*==========================================*/
 //            *Event listeners*             //
 /*==========================================*/
@@ -28,14 +31,79 @@ lightMode.addEventListener("click", toggleDark);
 /*==========================================*/
 //                *functions*               //
 /*==========================================*/
+
+//options - navigator => get current location
+var options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0,
+};
+
+function success(pos) {
+  var crd = pos.coords;
+  weather(crd.latitude, crd.longitude);
+}
+
+function error(err) {
+  console.warn("ERROR(" + err.code + "): " + err.message);
+}
+
+//will start weather function in seccess function
+navigator.geolocation.getCurrentPosition(success, error, options);
+
+//get current location weather(connected with navigator)
+function weather(latitude, longitude) {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=cc899ff07e1cdf8cd42fe037272216fb&units=metric`
+  )
+    .then(function (resp) {
+      return resp.json();
+    }) // Convert data to json
+    .then(function (data) {
+      if (data.main.temp > 0) {
+        currentWeather.style.color = "#d19a66";
+      } else {
+        currentWeather.style.color = "#61aeee";
+      }
+      currentWeather.style.fontSize = "3rem";
+      //insert weather data
+      currentWeather.innerHTML = data.main.temp.toFixed(1) + "&deg;";
+      currentDesc.innerHTML = data.weather[0].description;
+      currentLocation.innerHTML = data.name;
+
+      //based on local time automatically switch to dark theme
+      if (
+        new Date() <= new Date(data.sys.sunrise * 1000) ||
+        new Date() >= new Date(data.sys.sunset * 1000)
+      ) {
+        toggleDark();
+      }
+    })
+    .catch((err) => {
+      throw err;
+    });
+}
+
+//get current time
 function now() {
   let today = new Date();
   let date =
     today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
   let time =
     today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+
+  const offset = today.getTimezoneOffset();
+  console.log(offset, today.getHours());
+
   return `${date}\n${time}`;
 }
+
+setInterval(currentT, 1000);
+
+function currentT() {
+  currentTime.innerHTML = String(now());
+}
+
 function addTodo(e) {
   //prevnent form from submitting
   e.preventDefault();
