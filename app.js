@@ -17,6 +17,7 @@ let currentTime = document.querySelector(".currentTime");
 let currentDesc = document.querySelector(".currentDesc");
 let currentWeather = document.querySelector(".currentWeather");
 let currentLocation = document.querySelector(".currentLocation");
+let progressBar = document.querySelector(".bar");
 /*==========================================*/
 //            *Event listeners*             //
 /*==========================================*/
@@ -91,10 +92,6 @@ function now() {
     today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
   let time =
     today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-
-  const offset = today.getTimezoneOffset();
-  console.log(offset, today.getHours());
-
   return `${date}\n${time}`;
 }
 
@@ -121,7 +118,22 @@ function renderTodos() {
   todoList.innerHTML = "";
 
   // read todo's from local storage and display them
+  let checkedItem = 0;
+  let progressP = 0;
   const todos = JSON.parse(localStorage.getItem("todos"));
+  //console.log(todos.length);
+  if (todos) {
+    for (i = 0; i < todos.length; i++) {
+      if (todos[i].completed) {
+        checkedItem++;
+      }
+    }
+    progressP = (checkedItem / todos.length) * 100;
+  }
+  progressBar.style.width = progressP + "%";
+  console.log(progressBar.style.width);
+  progressBar.innerHTML = progressP.toFixed(1) + "%";
+
   // check that we're not creating the item again in the dom
   todos?.forEach((t) => createTodoItem(t));
 }
