@@ -8,6 +8,13 @@
 body {
   font-family: "Montserrat", sans-serif;
   min-height: 100vh;
+  background-color: #fff;
+  transition-duration: 1s;
+}
+
+button:hover {
+  opacity: 0.7;
+  transition-duration: 0.5s;
 }
 
 .dark-mode {
@@ -61,6 +68,7 @@ header h1 {
   margin-top: 4rem;
   margin-bottom: 0.5rem;
   color: #05445e;
+  transition-duration: 1s;
 }
 
 .todo-img {
@@ -76,6 +84,28 @@ form {
   justify-content: center;
   align-items: center;
 }
+
+.currentTime {
+  font-size: 1.5rem;
+  font-weight: lighter;
+}
+
+.currentTime,
+.weather {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.currentDesc {
+  padding-bottom: 5px;
+}
+
+.subWeatherItems {
+  padding-left: 1vh;
+  font-weight: lighter;
+}
+
 form input {
   outline: none;
   padding: 0.7rem;
@@ -86,6 +116,7 @@ form input {
   border-bottom-left-radius: 10px;
   max-height: 50px;
   color: white;
+  transition-duration: 1s;
 }
 
 ::placeholder {
@@ -179,6 +210,34 @@ form button i {
   margin: auto;
   max-width: 1200px;
 }
+
+.progressiveBar {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.bar {
+  width: 100%;
+  background-color: lightseagreen;
+  border-radius: 0.4rem;
+  margin-right: 2rem;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+  top: -19px;
+  transition-duration: 1s;
+  color: #fff;
+}
+
+.bar-background {
+  position: relative;
+  width: 100%;
+  background-color: hsl(236, 60%, 16%);
+  height: 19px;
+  border-radius: 0.4rem;
+  margin-right: 2rem;
+}
+
 .task-item {
   display: flex;
   flex-direction: row;
@@ -256,15 +315,18 @@ form button i {
 body.dark {
   background: #060822;
   color: white;
+  transition-duration: 1s;
 }
 
 header h1.dark {
   color: white;
+  transition-duration: 1s;
 }
 
 form input.dark {
   background: white;
   color: black;
+  transition-duration: 1s;
 }
 
 form button.dark:hover {

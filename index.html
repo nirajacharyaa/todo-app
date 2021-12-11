@@ -84,6 +84,15 @@
       <img class="todo-img" src="to-do-list.png" alt="Todo Image" />
     </header>
 
+    <div class="currentTime">0000/00/00 00:00:00</div>
+    <div class="weather">
+      <div class="currentWeather">Temperature</div>
+      <div class="subWeatherItems">
+        <div class="currentDesc">Weather Description</div>
+        <div class="currentLocation">Location</div>
+      </div>
+    </div>
+
     <form>
       <input type="text" id="input" placeholder="✍️ Add Items..." />
       <button class="add" type="submit">
@@ -101,6 +110,10 @@
       </button>
     </form>
     <main class="wrapper">
+      <div class="progressiveBar">
+        <div class="bar-background"></div>
+        <div class="bar">0%</div>
+      </div>
       <ul id="todo-container"></ul>
     </main>
     <div id="snackbar"></div>
