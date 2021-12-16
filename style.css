@@ -184,7 +184,7 @@ form button i {
   color: #20b254;
 }
 
-.all-done {
+.all-done, .all-undone {
   cursor: pointer;
   background-color: lightseagreen;
   margin-left: 10px;
@@ -203,6 +203,11 @@ form button i {
 
 .all-done:hover {
   background-color: green;
+  color: white;
+}
+
+.all-undone:hover {
+  background-color: blue;
   color: white;
 }
 
@@ -294,6 +299,16 @@ form button i {
   font-size: 1rem;
   color: white;
   background-color: #20b254;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.2rem;
+}
+.task-item .edited {
+  border: none;
+  font-size: 1rem;
+  margin-left: 5px;
+  color: white;
+  background-color: skyblue;
   padding: 0.5rem;
   cursor: pointer;
   border-radius: 0.2rem;
@@ -416,4 +431,8 @@ form button.dark:hover {
     bottom: 0;
     opacity: 0;
   }
+}
+footer {
+  text-align: center;
+  font-size: 1em;
 }
