@@ -25,7 +25,9 @@ let progressBar = document.querySelector(".bar");
 // Your code to run since DOM is loaded and ready
 document.addEventListener("DOMContentLoaded", () => renderTodos());
 add.addEventListener("click", addTodo);
-todoList.addEventListener("click", deleteCheck);
+todoList.addEventListener("click", deleteButton);
+todoList.addEventListener("click", checkButton);
+todoList.addEventListener("click", editButton);
 darkMode.addEventListener("click", toggleDark);
 lightMode.addEventListener("click", toggleDark);
 
@@ -85,16 +87,28 @@ function weather(latitude, longitude) {
     });
 }
 
-//get current time
+//get current time with a format "YYYY/MM/DD **:**:**"
 function now() {
   let today = new Date();
-  let date =
-    today.getFullYear() + "/" + (today.getMonth() + 1) + "/" + today.getDate();
-  let time =
-    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  var year = today.getFullYear();
+  var month = (today.getMonth() + 1);
+  var dateTime = today.getDate();
+
+  var date = year;
+  date += ((month < 10) ? '/0' : "/") + month;
+  date += ((date < 10) ? '/0' : "/") + dateTime;
+
+  var hour = today.getHours();
+  var minute = today.getMinutes();
+  var second = today.getSeconds();
+
+  var time = ((hour < 10) ? '0' : '') + hour;
+    if (hour == 0)
+      time = '00';
+  time += ((minute < 10) ? ':0' : ':') + minute;
+  time += ((second < 10) ? ':0' : ':') + second;
   return `${date}\n${time}`;
 }
-
 setInterval(currentT, 1000);
 
 function currentT() {
@@ -190,6 +204,11 @@ function createTodoItem(todo) {
   completedBtn.classList.add("completed");
   taskButtons.appendChild(completedBtn);
 
+  const editBtn = document.createElement("button");
+  editBtn.innerHTML = `<i class="fa fa-pencil-alt"></i>`;
+  editBtn.classList.add("edited");
+  taskButtons.appendChild(editBtn);
+
   //completed tasks
   const trashBtn = document.createElement("button");
   trashBtn.innerHTML = `<i class="fa fa-trash"></i>`;
@@ -216,7 +235,7 @@ function createTodoItem(todo) {
   tasksWrapper.appendChild(taskItem);
 }
 
-function deleteCheck(e) {
+function deleteButton(e) {
   const item = e.target;
   const todos = JSON.parse(localStorage.getItem("todos"));
   if (item.classList.contains("trash")) {
@@ -230,18 +249,45 @@ function deleteCheck(e) {
     }
     localStorage.setItem("todos", JSON.stringify(todos));
   }
+  renderTodos();
+}
 
+function checkButton(e) {
+  const item = e.target;
+  const todos = JSON.parse(localStorage.getItem("todos"));
   if (item.classList.contains("completed")) {
-    // get the clicked item
+
     let clickedItemIndex = todos
       .map(({ text }) => text)
       .findIndex((ele) => ele === item.parentElement.parentElement.innerText);
 
-    // toggle todo state
     todos[clickedItemIndex].completed = !todos[clickedItemIndex].completed;
     localStorage.setItem("todos", JSON.stringify(todos));
   }
+  renderTodos();
+}
 
+function editButton(e) {
+  const item = e.target;
+  const todos = JSON.parse(localStorage.getItem("todos"));
+  if (item.classList.contains("edited")) {
+    let flag = prompt("Please enter your new description of todolist","");
+    if(flag != null && flag != ""){
+    const index = todos
+    .map(({ text }) => text)
+    .indexOf(item.parentElement.parentElement.innerText);
+
+    if (index > -1) {
+    todos.splice(index, 1);
+
+    let dateTime = item.parentElement.parentElement.parentElement.innerText ;
+    let tempobj = {text: flag, completed: false, date: dateTime.slice(0, 19)};
+    todos.splice(index, 0,tempobj);
+    showSnackBar("Todo List Updated Successfully...");
+    }
+    localStorage.setItem("todos", JSON.stringify(todos));
+    }
+  }
   renderTodos();
 }
 
@@ -255,8 +301,7 @@ function showSnackBar(msg) {
 
 function clearStorage() {
   if (confirm("Do you really want to clear?")) {
-    localStorage.clear();
-    update();
+     localStorage.removeItem("todos");
   }
 }
 
@@ -271,6 +316,19 @@ function allDoneStorage() {
     localStorage.setItem("todos", JSON.stringify(items));
   }
 }
+
+function allUnDoneStorage() {
+  var items = JSON.parse(localStorage.getItem("todos"));
+  if (confirm("Do you really want to undone all TodoList?")) {
+    items.map(function (e) {
+      if (e.completed) {
+        e.completed = false;
+      }
+    });
+    localStorage.setItem("todos", JSON.stringify(items));
+  }
+}
+
 
 function toggleDark() {
   if (!darkMode.classList.contains("display-none")) {
@@ -289,3 +347,42 @@ function toggleDark() {
     dark_title.style.color = "#05445e";
   }
 }
+
+const dark_light_Item = localStorage.getItem("dark-light");
+const dark_light_button = document.querySelector(".dark-light");
+let temp = localStorage.getItem(".dark-light");
+
+function enableDarkMode(){
+  document.body.classList.add('dark-light');
+  localStorage.setItem('dark-light', 'enabled');
+  darkMode.classList.add("display-none");
+  lightMode.classList.remove("display-none");
+  dark_body.classList.add("dark");
+  dark_input.classList.add("dark");
+  dark_formBtn.classList.add("dark");
+  dark_title.style.color = "white";
+}
+
+function disableDarkMode() {
+  document.body.classList.remove('dark-light');
+  localStorage.setItem('dark-light', null);
+  lightMode.classList.add("display-none");
+  darkMode.classList.remove("display-none");
+  dark_body.classList.remove("dark");
+  dark_input.classList.remove("dark");
+  dark_formBtn.classList.remove("dark");
+  dark_title.style.color = "#05445e";
+}
+
+if (dark_light_Item === 'enabled') {
+  enableDarkMode();
+}
+
+dark_light_button.addEventListener('click', () => {
+  temp = localStorage.getItem('dark-light');
+  if (temp !== 'enabled') {
+    enableDarkMode();
+  } else {
+    disableDarkMode();
+  }
+});
